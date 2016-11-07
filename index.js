@@ -52,7 +52,7 @@ module.exports = {
         // 操作模版文件
         var destHtml = this.obj.templateHtmlPath;
         var version = this.obj.version;
-        var path = this.obj.path + this.obj.filename + ".js";
+        var jsname = this.obj.templateLinkPath + this.obj.filename + ".js";
 
         fs.readFile(destHtml, 'utf8', function (err, data) {
             if (err) throw err;
@@ -68,15 +68,8 @@ module.exports = {
             fs.readFile(checkVersionPath, "utf8", function (err, versionJs) {
                 if (err) throw err;
 
-                // 替换引入version.js的路径
-                var destHtmlLevel = destHtml.match(/\//g);
-                if (destHtmlLevel) {
-                    for (var i=0; i<destHtmlLevel.length; i++) {
-                        path = "../" + path;
-                    }
-                }
-
-                var versionJs = '<script id="version">\n'+ versionJs.replace(/\{\{path\}\}/, path) +'</script>';
+                console.log("//**模版文件引入js的路径" + jsname);
+                var versionJs = '<script id="version">\n'+ versionJs.replace(/\{\{path\}\}/, jsname) +'</script>';
                 data = data.replace(/<title>(.*?)<\/title>/, versionJs + '\n<title>$1</title>');
 
                 fs.writeFile(destHtml, data, function (err) {

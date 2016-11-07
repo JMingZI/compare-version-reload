@@ -16,6 +16,7 @@ compareVersion.init({
     filename: "version",
     path: "./",
     templateHtmlPath: "./src/index.html",
+    templateLinkPath: "../",
     version: "2.0.0"
 });
 ```
@@ -23,9 +24,24 @@ compareVersion.init({
 参数说明
 
 ```yaml
-// obj = { filename, path, templateHtmlPath, version }
-// 传入的参数：生成的js文件名，生成的js文件路径，需要处理的html文件及路径，需要添加的版本
+obj = { 
+    filename, 
+    path, 
+    templateHtmlPath, 
+    templateLinkPath,
+    version 
+};
+
+参数：
+    生成的js文件名，
+    生成的js文件路径，
+    需要处理的html文件及路径，
+    html中引入生成js的相对路径，
+    需要添加的版本
 ```
+
+执行过程:
+![test](./test/test.png)
 
 原理: 
 
