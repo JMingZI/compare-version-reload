@@ -1,5 +1,13 @@
 # compare-version-reload
 
+安装
+```
+npm install compare-version-reload
+
+// 升级
+npm update compare-version-reload
+```
+
 使用
 
 ```js
@@ -19,8 +27,18 @@ compareVersion.init({
 // 传入的参数：生成的js文件名，生成的js文件路径，需要处理的html文件及路径，需要添加的版本
 ```
 
+原理: 
 
-原理
+在入口文件中动态请求js文件，在js文件中调用全局的方法，这个方法去比对最新的版本号与html中的是否一致。
+
++ 1、为什么要这么做？  
+因为html确实会被缓存！
+
++ 2、使用gulp，webpack都可以，因为原理不依赖打包工具。
+如果版本不一致的做法是：在原链接上添加一个version参数并更新参数值。
+
+
+作用
 
 ```yaml
 /**
