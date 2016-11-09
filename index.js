@@ -25,8 +25,7 @@ module.exports = {
 
         this.obj = obj;
         this._OPT_.VERSION = obj.version;
-        this._OPT_.CONTENT = "window.APP__VERSION = '"+ obj.version 
-            +"';APP_VERSION_CALLBACK && APP_VERSION_CALLBACK()";
+        this._OPT_.CONTENT = "APP_VERSION_CALLBACK && APP_VERSION_CALLBACK("+ obj.version +")";
 
         this.createVersion();
         this.handleTemplateHtml();
